@@ -1,0 +1,22 @@
+[60 s] shards 255+0/256  pairs 0.000e+00
+[121 s] shards 255+0/256  pairs 0.000e+00
+[181 s] shards 255+0/256  pairs 0.000e+00
+[241 s] shards 255+0/256  pairs 0.000e+00
+[301 s] shards 255+0/256  pairs 6.650e+02
+[362 s] shards 255+0/256  pairs 6.650e+02
+[422 s] shards 255+0/256  pairs 6.650e+02
+[482 s] shards 255+0/256  pairs 1.331e+03
+[543 s] shards 255+0/256  pairs 1.331e+03
+[603 s] shards 255+0/256  pairs 1.331e+03
+[664 s] shards 255+0/256  pairs 1.331e+03
+[724 s] shards 255+0/256  pairs 1.331e+03
+[784 s] shards 255+0/256  pairs 1.998e+03
+[844 s] shards 255+0/256  pairs 2.666e+03
+[905 s] shards 255+0/256  pairs 2.666e+03
+[965 s] shards 255+0/256  pairs 2.666e+03
+[1025 s] shards 255+0/256  pairs 2.666e+03
+[1085 s] shards 255+0/256  pairs 2.666e+03
+[1146 s] shards 255+0/256  pairs 2.666e+03
+[1206 s] shards 255+0/256  pairs 2.666e+03
+[1266 s] shards 255+0/256  pairs 2.666e+03
+CN2X_MODE=cheb ../../pair/cn2pair 227600000000000000000000000 4900 10889 . 30  1304.99s user 3.87s system 99% cpu 21:48.98 total

@@ -1,0 +1,1 @@
+{"engine":"cn2pair","mode":2,"X":"227600000000000000000000000","T":4900,"QSTAR":10889,"nprimes":670,"nshards":256,"count_only":0,"complete":true,"stopped":false,"drained":false,"shards_done_prior":255,"shards_done_now":1,"pairs":3335,"skipped":2,"classes":5311,"candidates":1895049777,"sieved":458593993,"tests":1436455784,"passes":85,"seconds":1308.964}

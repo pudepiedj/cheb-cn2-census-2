@@ -7,7 +7,7 @@ date: 2026-11-08
 
 # Certificate: the Chebyshev–Carmichael numbers below $10^{30}$
 
-**Date:** 8 November 2026 (runs 17 October – 8 November)
+**Date:** 8 November 2026 (runs 17 October – 8 November); residue-$p$ validation added 23 November 2026 (§3)
 **Definition:** OEIS A299799, Carmichael numbers that are Chebyshev pseudoprimes: odd composite $n$ with $n \equiv 1$ or $p \pmod{(p^2-1)/2}$ for every prime $p \mid n$. Equivalently (A175530's criterion, with Carmichael's condition), $n$ is squarefree, $p-1 \mid n-1$, and $n \equiv \pm 1$ modulo both $p-1$ and $p+1$, for every $p \mid n$.
 **Status:** the computations are complete and every check below passes. The capped and pair engines are the certified ones of the census below $10^{28}$ ([cheb-cn2-census](https://github.com/pudepiedj/cheb-cn2-census), `docs/CN2_Cheb_Certificate_1e28.md`), byte for byte, in their $D = 2$ ("cheb") mode. The $(q,a)$ tail needed one change, because at $10^{30}$ its primes run past $2^{32}$: it was run as two engines that split the primes at $2^{32}$ (§3; proof in `docs/CN2_Tail_Coverage_Proof.md`, §3.1).
 **Run directory:** `results/cert_1e30/`
@@ -123,6 +123,12 @@ Every shard is recorded exactly once in each `done.log`. The run took 17 October
 No `UNPROVEN-PRIMALITY` flag was raised.
 
 **What this run could not test.** At $10^{28}$ the pair family found the one term only it guaranteed, $2.088\times10^{24}$ (whose second-largest prime, 15,391, exceeded $T = 15{,}000$). At $T = 30{,}000$ that term falls in the capped part. So at $10^{30}$ the pair and tail families had no live term to re-find. Their completeness rests on the proof (`docs/CN2_Tail_Coverage_Proof.md`), on the $10^{28}$ run with the same pair engine, and on the validation in §2 for the two tail engines.
+
+**Residue-p validation (added 23 November 2026).** Every engine allows two residues at each prime, $n \equiv 1$ or $n \equiv p \pmod{g(p)}$. In every live term the pair and tail families had found, every prime had residue 1. So their residue-$p$ branch was covered by the proofs but had never found a real term. A reader, R. Vakil, asked whether it would. Six terms have a residue-$p$ prime, and the smallest is a(43) $\approx 2.275\times10^{26}$, whose residue-$p$ prime is 4933. The capped engine found a(43) in this run. Both tail engines have now found it through 4933, in targeted runs at $X = 2.276\times10^{26}$ (records in `results/cert_1e30/residue_p/`):
+- **Pair family.** This is the certified `cn2pair` binary, in cheb mode with $T = 4900$ and $q^* = 10889$. a(43)'s two largest primes are 4933, with residue $p$, and 10889, with residue 1, so a(43) lies in this family. Only the shard containing $q = 10889$ was run. It made 1,436,455,784 Fermat tests, 85 passed, and exactly one of the 85 is a Chebyshev–Carmichael number: a(43).
+- **$(q,a)$ tail.** This is `cn2tail_top`, byte-identical to the binary of this run, with $R_0 = 4932$ and the validation setting `CN2X_TOP_PMAX` $= 4933$, so the only prime scanned is 4933. Here a(43) lies in the residue-$p$ family, $m = 1 + a\thinspace g(4933)$ with $a = 3791025462754109$. The frozen `cn2tail` can't be restricted to a single prime, and with $R_0 < 4933$ it would face about $10^{18}$ pairs. The run covered the shard containing that $a$ and the 321 shards at the top of the $a$-range. It made $6.48\times10^{10}$ Fermat calls, and exactly one passed: $(4933, 3791025462754109)$, which is a(43).
+
+So each of the three engines has now found a real term through its residue-$p$ branch.
 
 **No shard replay** was run at $10^{30}$, unlike at $10^{28}$. A replay re-runs a sample of shards alone and compares their work counters with the record. Here its value would have been small:
 - the capped and pair binaries are the ones already replayed at $10^{28}$;
@@ -347,6 +353,7 @@ No `UNPROVEN-PRIMALITY` flag was raised.
 | all 87 terms of the certified census below $10^{28}$ are found, as a(1)–a(87) | ✓ |
 | the order-2 terms are exactly the 95 found by the conditional Howe run to $10^{30}$ ($T = 10^4$) | ✓ (identical sets) |
 | standalone check (`tests/check_cheb_terms.py`, standard library only): every term satisfies the definition | ✓ all 196, 95 of them of order 2 (`check_cheb_terms_1e30.txt`) |
+| the residue-$p$ branch of each engine finds a real term: a(43), through its prime 4933 (capped: in this run; pair and $(q,a)$ tail: targeted runs, 23 November 2026) | ✓ (§3) |
 | shard replay | not run (§3) |
 
 The reference lists are independent of this computation: OEIS's A299799, the certified census below $10^{28}$, and the conditional order-2 run. Every reference number was found. The standalone check factors every term again by trial division and checks the definition, without using the engines.

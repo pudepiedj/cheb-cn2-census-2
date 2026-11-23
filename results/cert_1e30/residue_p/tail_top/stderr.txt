@@ -1,0 +1,1 @@
+[cn2tail] primes in (4932, 4933]: 1   shards 14126321   total (p,a) pairs 7.5840e+15   setup 0.1s   prior shards done 14125999

@@ -1,0 +1,1 @@
+{"mode":2,"X":"227600000000000000000000000","R0":4932,"T":4933,"complete":true,"stopped":false,"drained":false,"threads":30,"shards":14126321,"shards_done":14126321,"shards_done_now":322,"total_pairs":"7584010411007470","tests":172444966382,"sieved":107609757749,"fermat_calls":64835208633,"fermat_passes":1,"setup_seconds":0.064,"search_seconds":2486.744}
